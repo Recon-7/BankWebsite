@@ -1,0 +1,175 @@
+{
+  "menuTabs": [
+    {
+      "id": "small-plates",
+      "label": "Small Plates",
+      "note": "3 plates for £18 · 5 plates for £25 · Available all day Wednesday to Saturday",
+      "columns": [
+        {
+          "sections": [
+            {
+              "title": "Small Plates",
+              "items": [
+                { "name": "Tempura King Prawns", "desc": "Asian slaw & sweet chilli dip", "price": "£11" },
+                { "name": "Thai Beef Skewers", "desc": "Slaw & black bean aioli", "price": "£10" },
+                { "name": "Char Sui Belly Pork", "desc": "Slaw & 5 spice carrot purée", "price": "£10" },
+                { "name": "Mussels", "desc": "Thai curry or white wine sauce", "price": "£10" },
+                { "name": "Panko Breaded Calamari", "desc": "Garlic mayonnaise", "price": "£9" },
+                { "name": "Fish Goujons", "desc": "Battered cod, tartare sauce", "price": "£9" }
+              ]
+            }
+          ]
+        },
+        {
+          "sections": [
+            {
+              "title": "Light Bites",
+              "items": [
+                { "name": "Chicken Wings", "desc": "BBQ, salt & chilli, or spicy", "price": "£10" },
+                { "name": "Halloumi Fries", "desc": "Spring onions, sweet chilli (v, gf)", "price": "£8" },
+                { "name": "Pan Fried Chorizo", "desc": "Red wine and garlic (gf)", "price": "£8" },
+                { "name": "Meatballs", "desc": "Spicy tomato sauce, spring onions (gf)", "price": "£9" },
+                { "name": "Patatas Bravas", "desc": "Spicy bravas sauce (vg)", "price": "£8" },
+                { "name": "Hummus & Red Pepper Bruschetta", "desc": "Rocket & balsamic glaze (vg)", "price": "£8" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mains",
+      "label": "Mains",
+      "columns": [
+        {
+          "sections": [
+            {
+              "title": "Mains",
+              "items": [
+                { "name": "8oz Sirloin Steak", "desc": "Chunky chips, grilled tomato & mushrooms", "price": "£22" },
+                { "name": "Hand Battered Cod Fillet", "desc": "Chunky chips, mushy peas, tartare sauce", "price": "£15" },
+                { "name": "Asian Chicken Bites", "desc": "Sweet & spicy, rice & prawn crackers", "price": "£18" },
+                { "name": "Thai Green Curry", "desc": "Vegetables, rice (vg, gf) — add chicken or prawns", "price": "£16" },
+                { "name": "Chef's Pie of the Day", "desc": "Mushy peas, chunky chips or mash", "price": "£16" }
+              ]
+            }
+          ]
+        },
+        {
+          "sections": [
+            {
+              "title": "Burgers",
+              "items": [
+                { "name": "The Bank Burger", "desc": "Double patty, Monterey Jack, burger sauce, fries", "price": "£15" },
+                { "name": "Peri Peri Chicken Burger", "desc": "Double fried chicken, Monterey Jack, chicken wing, fries", "price": "£15" },
+                { "name": "Veggie Burger", "desc": "Halloumi, sweet chilli mayo, sweet potato fries (v)", "price": "£14" }
+              ]
+            },
+            {
+              "title": "Desserts",
+              "items": [
+                { "name": "Sticky Toffee Pudding", "desc": "Butterscotch sauce & vanilla ice cream", "price": "£7" },
+                { "name": "Triple Chocolate Brownie", "desc": "Peanut brittle, berry compote, vanilla ice cream", "price": "£7" },
+                { "name": "Cheese Board", "desc": "Crackers, chutney & grapes", "price": "£10" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sunday",
+      "label": "Sunday Lunch",
+      "note": "2 courses £19 · 3 courses £23 · Available every Sunday 12pm – 5pm",
+      "columns": [
+        {
+          "sections": [
+            {
+              "title": "Sunday Mains",
+              "items": [
+                { "name": "Merlot Braised Beef Feather Blade", "desc": "Duck fat roasties, swede purée, Yorkshire pud, red wine jus", "price": "£15" },
+                { "name": "Crispy Belly Pork", "desc": "Cider jus, homemade spiced apple sauce", "price": "£14.50" },
+                { "name": "Roast Chicken Supreme", "desc": "Stuffing, champ, giant Yorkshire pud", "price": "£14.50" },
+                { "name": "Confit Lamb", "desc": "Minted gravy, parsnip crisps (£2 supplement)", "price": "£16" },
+                { "name": "Homemade Nut Roast", "desc": "Chestnut & apricot, roasties, red wine jus (v)", "price": "£14" }
+              ]
+            }
+          ]
+        },
+        {
+          "sections": [
+            {
+              "title": "Sunday Starters",
+              "items": [
+                { "name": "Soup of the Day", "desc": "With bread" },
+                { "name": "Sticky BBQ Asian Chicken Wings", "desc": "Asian slaw & sweet chilli dip" },
+                { "name": "Halloumi Fries", "desc": "Sweet chilli sauce" }
+              ]
+            },
+            {
+              "title": "Sunday Desserts",
+              "items": [
+                { "name": "Caribbean Eton Mess", "desc": "Pineapple, mango, passionfruit & coconut" },
+                { "name": "Sticky Toffee Pudding", "desc": "Butterscotch sauce & ice cream" },
+                { "name": "Winter Berry Crumble", "desc": "Vegan vanilla ice cream (vg)" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "breakfast",
+      "label": "Breakfast",
+      "columns": [
+        {
+          "sections": [
+            {
+              "title": "Breakfast",
+              "items": [
+                { "name": "Bankers Breakfast", "desc": "Sausage, bacon, hash brown, eggs, black pudding, beans, mushroom & toast", "price": "£12.50" },
+                { "name": "Vegetarian Breakfast", "desc": "Veggie sausage, eggs, hash brown, spinach, beans, mushroom, tomato & toast (v)", "price": "£11" },
+                { "name": "Eggs Benedict", "desc": "Toasted muffin, poached eggs, bacon & hollandaise", "price": "£10.50" },
+                { "name": "Eggs Royale", "desc": "Toasted muffin, poached eggs, smoked salmon & hollandaise", "price": "£11" }
+              ]
+            }
+          ]
+        },
+        {
+          "delivery": {
+            "title": "Delivery",
+            "intro": "Can't dine in with us? Order via Uber Eats or Just Eat for delivery or collection.",
+            "links": [
+              {
+                "label": "Order on Uber Eats",
+                "url": "https://www.ubereats.com/gb/store/the-bank-restaurant-%26-bar/X5FsBnS4WDG-r-a2vtrtog"
+              },
+              {
+                "label": "Order on Just Eat",
+                "url": "https://www.just-eat.co.uk/restaurants-the-bank-gateshead"
+              }
+            ],
+            "note": "Breakfast served until 3pm, Wednesday to Saturday."
+          }
+        }
+      ]
+    }
+  ],
+  "cocktails": [
+    { "name": "Old Fashioned", "desc": "Bourbon, Angostura bitters, brown sugar", "price": "£9" },
+    { "name": "Porn Star Martini", "desc": "Vodka, Passoa, lime, vanilla & passion fruit, pineapple, shot of Prosecco", "price": "£9" },
+    { "name": "Espresso Martini", "desc": "Vodka, Tia Maria, vanilla syrup, fresh coffee", "price": "£9" },
+    { "name": "Negroni", "desc": "Martini Rosso, Campari, gin, squeeze of orange", "price": "£9" },
+    { "name": "Bramble", "desc": "Gin, lemon juice, sugar syrup, Crème de Mure", "price": "£9" },
+    { "name": "Bloody Mary", "desc": "Vodka, tomato juice, Tabasco, Lea & Perrins, lemon and black pepper", "price": "£9" }
+  ],
+  "openingHours": [
+    { "day": "Monday", "time": "Closed", "closed": true },
+    { "day": "Tuesday", "time": "Closed", "closed": true },
+    { "day": "Wednesday", "time": "12pm – Late", "closed": false },
+    { "day": "Thursday", "time": "12pm – Late", "closed": false },
+    { "day": "Friday", "time": "12pm – Late", "closed": false },
+    { "day": "Saturday", "time": "12pm – Late", "closed": false },
+    { "day": "Sunday", "time": "12pm – 7:30pm", "closed": false }
+  ]
+}

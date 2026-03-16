@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Hire — The Bank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-page="private-hire">
+  <nav id="app-nav" class="site-nav"></nav>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Private <em>Hire</em></h1>
+        <p class="section-copy">Exclusive use of our Grade II listed venue, bespoke food, and tailored drinks packages.</p>
+
+        <div class="grid-2" style="margin-top:1.2rem;">
+          <div class="card">
+            <h3>Exclusive Venue Hire</h3>
+            <p>Perfect for birthdays, events, and celebrations that need a statement setting.</p>
+          </div>
+          <div class="card">
+            <h3>Bespoke Catering & Bar</h3>
+            <p>Custom menus and dedicated bar service for your event requirements.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1rem;">
+          <h3>Make an Enquiry</h3>
+          <form id="private-hire-form">
+            <div class="form-row"><input class="form-input" name="name" type="text" placeholder="Your name" required></div>
+            <div class="form-row"><input class="form-input" name="email" type="email" placeholder="Email address" required></div>
+            <div class="form-grid-2">
+              <input class="form-input" name="eventDate" type="date" required>
+              <input class="form-input" name="guestCount" type="text" placeholder="Number of guests" required>
+            </div>
+            <div class="form-row" style="margin-top:.9rem;"><textarea class="form-input" name="details" rows="4" placeholder="Tell us about your event" required></textarea></div>
+            <button class="btn btn-primary" type="submit">Send Enquiry</button>
+            <p id="private-hire-status" class="menu-note">This opens your email app to contact info@thebanklowfell.co.uk.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="app-footer" class="site-footer"></footer>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>
