@@ -1,17 +1,6 @@
 const DOJO_BOOKING_URL = 'https://web.dojo.app/create_booking/vendor/0XYLokEoeff77KUU00p7ex68kXi4SF8dCobxdAlAkQ0_restaurant';
 
-const LOGO_SVG = `
-  <svg xmlns="http://www.w3.org/2000/svg" width="90" height="18" viewBox="0 0 118.633 22.312" aria-label="The Bank logo" class="brand-logo">
-    <g fill="currentColor">
-      <path d="M7.56,22.311h5.052V3.913h7.56V0H0V3.913H7.56Z"/>
-      <path d="M39.116,22.311V0H34.065V9.032H23.428V0H18.376V22.311h5.052V12.745h10.637v9.567Z"/>
-      <path d="M52.672,3.913V0H38.757V22.312H52.873V18.398H43.807V12.71h8.5V8.797h-8.5V3.913Z"/>
-      <path d="M74.075,10.037a4.526,4.526,0,0,0,2.643-4.282A4.869,4.869,0,0,0,74.544,1.5,10.666,10.666,0,0,0,68.422,0H61.063V22.312h9.7a8.829,8.829,0,0,0,5.755-1.655,5.831,5.831,0,0,0,2.007-4.767q0-4.481-4.449-5.854M66.113,3.381h1.975a4.35,4.35,0,0,1,2.643.719,2.31,2.31,0,0,1,.97,1.956,2.627,2.627,0,0,1-.938,2.124,3.769,3.769,0,0,1-2.508.787H66.114ZM69.693,18.737H66.114V12.71h3.312q3.946,0,3.947,2.978,0,3.044-3.68,3.044"/>
-      <path d="M99.976,22.312l-9.5-22.312h-5.65L76.26,22.312h5.017l1.71-4.549H92.7l1.9,4.549ZM84.251,14.283l3.259-8.956,3.74,8.956Z"/>
-      <path d="M97.291,0V22.312h5.051V8.26l11.727,14.052h4.564V0h-5.052V13.949L101.941,0Z"/>
-    </g>
-  </svg>
-`;
+const LOGO_IMG = `<img src="assets/images/favicon-32x32.png" alt="" class="brand-logo" width="32" height="32">`;
 
 const escapeHtml = (str = '') => str
   .replaceAll('&', '&amp;')
@@ -30,8 +19,8 @@ const injectLayout = () => {
     nav.innerHTML = `
       <div class="site-nav-inner container">
         <a class="brand" href="index.html" aria-label="The Bank home">
+          ${LOGO_IMG}
           <span class="brand-word">The Bank</span>
-          ${LOGO_SVG}
         </a>
         <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-primary" aria-label="Toggle navigation">
           <span class="nav-toggle-lines" aria-hidden="true"></span>

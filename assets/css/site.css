@@ -109,10 +109,10 @@ a { color: inherit; }
   text-transform: uppercase;
 }
 .brand-logo {
-  height: 1.4rem;
-  width: auto;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
 }
-.brand-logo path { fill: currentColor; }
 .nav-links {
   display: flex;
   gap: 1.1rem;
