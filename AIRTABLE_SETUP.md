@@ -14,9 +14,38 @@ This guide walks you through setting up Airtable as the content management syste
 2. Name it: **The Bank Menu**
 3. Click "Create base"
 
-## Step 3: Create Tables and Fields
+## Step 3: Create Tables
 
-Your base needs 4 tables. For each table below, create it and add the specified fields:
+Your base needs 3 tables (you can create them empty):
+- **Cocktails**
+- **HappyHour**
+- **OpeningHours**
+
+(Don't worry about fields yet - the import script will create them automatically!)
+
+## Step 3b: Automated Import (Recommended)
+
+Instead of manually creating fields, use the automated import script:
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Set up your .env file with credentials (from steps below)
+cp .env.example .env
+# Edit .env and add your AIRTABLE_API_TOKEN and AIRTABLE_BASE_ID
+
+# 3. Run the import script
+node scripts/import-airtable.js
+```
+
+**That's it!** All your data will be imported automatically. Skip to Step 4 below.
+
+---
+
+## Step 3 (Manual Import): Create Tables and Fields
+
+Alternatively, if you want to manually create fields, do this for each table below:
 
 ### Table 1: Cocktails
 

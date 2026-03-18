@@ -1,0 +1,8 @@
+day,time,closed
+Monday,Closed,TRUE
+Tuesday,Closed,TRUE
+Wednesday,12:30pm – Late,FALSE
+Thursday,12:30pm – Late,FALSE
+Friday,12:30pm – Late,FALSE
+Saturday,12:30pm – Late,FALSE
+Sunday,12pm – 7:30pm,FALSE
