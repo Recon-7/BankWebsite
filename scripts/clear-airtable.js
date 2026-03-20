@@ -44,6 +44,11 @@ async function main() {
   await deleteAllRecords('OpeningHours');
   await deleteAllRecords('Wines');
   await deleteAllRecords('HotBeverages');
+  await deleteAllRecords('MenuTabs');
+  await deleteAllRecords('MenuSections');
+  await deleteAllRecords('MenuItems');
+  await deleteAllRecords('DeliveryOptions');
+  await deleteAllRecords('Reviews');
 
   console.log('✅ Tables cleared! Now run:\n   node scripts/import-airtable.js\n');
 }

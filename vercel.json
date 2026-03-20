@@ -44,7 +44,7 @@
       "dest": "/index.html"
     },
     {
-      "src": "/(menus|cocktails|visit|book|private-hire)",
+      "src": "/(menus|drinks|visit|book|private-hire)",
       "dest": "/$1.html"
     }
   ],

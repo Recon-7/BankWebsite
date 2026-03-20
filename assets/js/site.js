@@ -29,7 +29,7 @@ const injectLayout = () => {
           <ul class="nav-links">
             <li><a href="index.html" class="${current === 'home' ? 'active' : ''}" ${current === 'home' ? 'aria-current="page"' : ''}>Home</a></li>
             <li><a href="menus.html" class="${current === 'menus' ? 'active' : ''}" ${current === 'menus' ? 'aria-current="page"' : ''}>Menus</a></li>
-            <li><a href="cocktails.html" class="${current === 'cocktails' ? 'active' : ''}" ${current === 'cocktails' ? 'aria-current="page"' : ''}>Drinks</a></li>
+            <li><a href="drinks.html" class="${current === 'drinks' ? 'active' : ''}" ${current === 'drinks' ? 'aria-current="page"' : ''}>Drinks</a></li>
             <li><a href="private-hire.html" class="${current === 'private-hire' ? 'active' : ''}" ${current === 'private-hire' ? 'aria-current="page"' : ''}>Private Hire</a></li>
             <li><a href="visit.html" class="${current === 'visit' ? 'active' : ''}" ${current === 'visit' ? 'aria-current="page"' : ''}>Visit</a></li>
           </ul>
@@ -170,18 +170,18 @@ const renderMenus = (siteData) => {
     </div>
   `;
 
-  const renderDelivery = (delivery) => `
-    <div class="menu-section-title">${escapeHtml(delivery.title)}</div>
-    <p class="section-copy max-w-none">${escapeHtml(delivery.intro)}</p>
-    ${delivery.links.map((l) => `<a class="btn btn-ghost mt-05" target="_blank" rel="noopener noreferrer" href="${escapeHtml(l.url)}">${escapeHtml(l.label)}</a>`).join('')}
-    <p class="menu-note">${escapeHtml(delivery.note)}</p>
-  `;
+  const renderDeliveryTab = (options) => options.map(opt => `
+    <div class="delivery-option">
+      <div class="delivery-option-header">
+        <h3 class="delivery-option-name">${escapeHtml(opt.name)}</h3>
+        ${opt.note ? `<span class="delivery-option-badge">${escapeHtml(opt.note)}</span>` : ''}
+      </div>
+      <p class="delivery-option-desc">${escapeHtml(opt.description)}</p>
+      <a class="btn btn-primary mt-08" href="${escapeHtml(opt.url)}" target="_blank" rel="noopener noreferrer">Order on ${escapeHtml(opt.name)}</a>
+    </div>
+  `).join('');
 
   const renderMenuColumn = (col) => {
-    if (col.delivery) {
-      return `<div class="menu-section">${renderDelivery(col.delivery)}</div>`;
-    }
-
     return `
       <div class="menu-section">
         ${col.sections.map((section, sectionIndex) => `
@@ -213,6 +213,12 @@ const renderMenus = (siteData) => {
       return `
       <div id="${panelId}" class="menu-panel${active ? ' active' : ''}" role="tabpanel" aria-labelledby="${tabId}" ${active ? '' : 'hidden'}>
         <div class="menu-cols">${tab.columns.map(renderMenuColumn).join('')}</div>
+        ${tab.type === 'delivery' && tab.options?.length
+          ? `<div class="delivery-order-section">
+              <h3 class="delivery-order-heading">Order for Delivery</h3>
+              <div class="delivery-options">${renderDeliveryTab(tab.options)}</div>
+            </div>`
+          : ''}
         ${tab.note ? `<p class="menu-note">${escapeHtml(tab.note)}</p>` : ''}
       </div>
     `;
@@ -271,10 +277,17 @@ const renderCocktails = (siteData) => {
   const el = document.getElementById('cocktails-grid');
   if (!el) return;
   
-  el.innerHTML = siteData.cocktails.map((c) => `
+  el.innerHTML = siteData.cocktails.map((c) => {
+    const nameLower = c.name.toLowerCase();
+    const img = nameLower.includes('espresso martini')
+      ? 'assets/images/drinks/espresso-martini.png'
+      : nameLower.includes('pornstar')
+        ? 'assets/images/drinks/pornstar-martini.png'
+        : 'assets/images/drinks/cocktails.jpg';
+    return `
     <div class="cocktail-card${c.happyHour ? ' happy-hour' : ''}">
       <div class="cocktail-card-image">
-        <img src="assets/images/cocktails-new.jpg" alt="${escapeHtml(c.name)}" loading="lazy">
+        <img src="${img}" alt="${escapeHtml(c.name)}" loading="lazy">
       </div>
       <div class="cocktail-card-content">
         <div class="cocktail-name">
@@ -285,7 +298,8 @@ const renderCocktails = (siteData) => {
         <div class="cocktail-price">${escapeHtml(c.price)}</div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 };
 
 const renderHappyHour = (siteData) => {
@@ -303,12 +317,86 @@ const renderHappyHour = (siteData) => {
 const renderHours = (siteData) => {
   const el = document.getElementById('hours-grid');
   if (!el) return;
-  el.innerHTML = siteData.openingHours.map((h) => `
+
+  const dayOrder = {
+    Monday: 0,
+    Tuesday: 1,
+    Wednesday: 2,
+    Thursday: 3,
+    Friday: 4,
+    Saturday: 5,
+    Sunday: 6
+  };
+
+  el.innerHTML = [...siteData.openingHours]
+  .sort((a, b) => (dayOrder[a.day] ?? 999) - (dayOrder[b.day] ?? 999))
+  .map((h) => `
     <div class="hours-row">
       <span>${escapeHtml(h.day)}</span>
       <span class="${h.closed ? 'closed' : 'time'}">${escapeHtml(h.time)}</span>
     </div>
   `).join('');
+};
+
+const parseTimeLabelTo24Hour = (label) => {
+  const match = (label || '').trim().toLowerCase().match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/);
+  if (!match) return null;
+
+  let hour = Number(match[1]);
+  const minute = Number(match[2] || 0);
+  const meridiem = match[3];
+
+  if (meridiem === 'pm' && hour !== 12) hour += 12;
+  if (meridiem === 'am' && hour === 12) hour = 0;
+
+  return hour + minute / 60;
+};
+
+const format12Hour = (time24) => {
+  const hour24 = Math.floor(time24);
+  const minutes = Math.round((time24 % 1) * 60);
+  const suffix = hour24 >= 12 ? 'pm' : 'am';
+  const hour12 = hour24 % 12 || 12;
+  return `${hour12}${minutes ? `:${String(minutes).padStart(2, '0')}` : ''}${suffix}`;
+};
+
+const buildHoursMap = (openingHours = []) => {
+  const dayIndexMap = {
+    Sunday: 0,
+    Monday: 1,
+    Tuesday: 2,
+    Wednesday: 3,
+    Thursday: 4,
+    Friday: 5,
+    Saturday: 6
+  };
+
+  return openingHours.reduce((map, row) => {
+    const dayIndex = dayIndexMap[row.day];
+    if (dayIndex === undefined) return map;
+
+    if (row.closed || !row.time || row.time.toLowerCase() === 'closed') {
+      map[dayIndex] = null;
+      return map;
+    }
+
+    const normalizedTime = row.time.replace(/approx\.?/gi, '').trim();
+    const parts = normalizedTime.split(/\s*[–-]\s*/);
+    if (parts.length !== 2) {
+      map[dayIndex] = null;
+      return map;
+    }
+
+    const open = parseTimeLabelTo24Hour(parts[0]);
+    const close = parseTimeLabelTo24Hour(parts[1]);
+    if (open === null || close === null) {
+      map[dayIndex] = null;
+      return map;
+    }
+
+    map[dayIndex] = { open, close };
+    return map;
+  }, {});
 };
 
 // Drinks page tabs and rendering
@@ -537,9 +625,7 @@ const init = async () => {
   initReveal();
   wireDojoLinks();
   wirePrivateHireForm();
-  initTestimonialsCarousel();
   initNewsletterForm();
-  initOpenStatus();
   initParallax();
   initFloatingButton();
 
@@ -562,6 +648,8 @@ const init = async () => {
     renderCocktails(siteData);
     renderHappyHour(siteData);
     renderHours(siteData);
+    renderReviews(siteData);
+    initOpenStatus(siteData);
     
     // Drinks page
     renderDrinksTabs();
@@ -578,58 +666,49 @@ const init = async () => {
   }
 };
 
-// Testimonials Carousel
-const initTestimonialsCarousel = () => {
-  const carousel = document.getElementById('testimonials-carousel');
-  if (!carousel) return;
+// Reviews
+const renderReviews = (siteData) => {
+  const grid = document.getElementById('reviews-grid');
+  const summary = document.getElementById('reviews-summary');
+  if (!grid) return;
 
-  const testimonials = carousel.querySelectorAll('.testimonial');
-  const dotsContainer = carousel.querySelector('.testimonial-dots');
-  if (!testimonials.length) return;
+  const reviews = siteData.reviews || [];
+  if (!reviews.length) return;
 
-  let currentIndex = 0;
-  let interval;
+  const stars = (n) => '★'.repeat(n) + '☆'.repeat(5 - n);
 
-  // Create dots
-  testimonials.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = `testimonial-dot${i === 0 ? ' active' : ''}`;
-    dot.setAttribute('role', 'tab');
-    dot.setAttribute('aria-label', `Testimonial ${i + 1}`);
-    dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    dot.addEventListener('click', () => goTo(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = dotsContainer.querySelectorAll('.testimonial-dot');
-
-  const goTo = (index) => {
-    testimonials[currentIndex].classList.remove('active');
-    dots[currentIndex].classList.remove('active');
-    dots[currentIndex].setAttribute('aria-selected', 'false');
-
-    currentIndex = index;
-
-    testimonials[currentIndex].classList.add('active');
-    dots[currentIndex].classList.add('active');
-    dots[currentIndex].setAttribute('aria-selected', 'true');
+  const sourceIcon = (source) => {
+    const s = (source || '').toLowerCase();
+    if (s.includes('google')) return '<span class="review-source-badge review-source-google">Google</span>';
+    if (s.includes('tripadvisor')) return '<span class="review-source-badge review-source-tripadvisor">TripAdvisor</span>';
+    if (s.includes('facebook')) return '<span class="review-source-badge review-source-facebook">Facebook</span>';
+    return `<span class="review-source-badge">${escapeHtml(source)}</span>`;
   };
 
-  const next = () => goTo((currentIndex + 1) % testimonials.length);
+  grid.innerHTML = reviews.map(r => `
+    <div class="review-card">
+      <div class="review-stars" aria-label="${r.rating} out of 5 stars">${stars(r.rating)}</div>
+      <blockquote class="review-quote">"${escapeHtml(r.quote)}"</blockquote>
+      <div class="review-footer">
+        <span class="review-author">— ${escapeHtml(r.author)}</span>
+        ${sourceIcon(r.source)}
+      </div>
+    </div>
+  `).join('');
 
-  const startAutoplay = () => {
-    interval = setInterval(next, 5000);
-  };
-
-  const stopAutoplay = () => {
-    clearInterval(interval);
-  };
-
-  carousel.addEventListener('mouseenter', stopAutoplay);
-  carousel.addEventListener('mouseleave', startAutoplay);
-
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    startAutoplay();
+  // Overall rating summary
+  if (summary && reviews.length) {
+    const avg = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+    const rounded = Math.round(avg * 10) / 10;
+    summary.innerHTML = `
+      <div class="reviews-overall">
+        <span class="reviews-overall-score">${rounded}</span>
+        <div>
+          <div class="reviews-overall-stars" aria-label="${rounded} out of 5">${stars(Math.round(avg))}</div>
+          <span class="reviews-overall-count">Based on ${reviews.length} review${reviews.length !== 1 ? 's' : ''}</span>
+        </div>
+      </div>
+    `;
   }
 };
 
@@ -658,43 +737,31 @@ const initNewsletterForm = () => {
 };
 
 // Open/Closed Status
-const initOpenStatus = () => {
+const initOpenStatus = (siteData) => {
   const statusEl = document.getElementById('open-status');
   if (!statusEl) return;
-
-  const HOURS = {
-    0: null, // Sunday - closed
-    1: null, // Monday - closed
-    2: { open: 16, close: 23 }, // Tuesday 4pm-11pm
-    3: { open: 16, close: 23 }, // Wednesday 4pm-11pm
-    4: { open: 16, close: 23.5 }, // Thursday 4pm-11:30pm
-    5: { open: 12, close: 24 }, // Friday 12pm-12am
-    6: { open: 12, close: 24 }  // Saturday 12pm-12am
-  };
+  const hours = buildHoursMap(siteData?.openingHours || []);
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const updateStatus = () => {
     const now = new Date();
     const day = now.getDay();
     const hour = now.getHours() + now.getMinutes() / 60;
-    const todayHours = HOURS[day];
+    const todayHours = hours[day];
 
     let isOpen = false;
     let message = '';
 
     if (todayHours && hour >= todayHours.open && hour < todayHours.close) {
       isOpen = true;
-      const closeHour = Math.floor(todayHours.close);
-      const closeMin = (todayHours.close % 1) * 60;
-      message = `Open now · Closes at ${closeHour === 24 ? '12' : closeHour > 12 ? closeHour - 12 : closeHour}${closeMin ? ':30' : ''}${closeHour >= 12 ? 'am' : 'pm'}`;
+      message = `Open now · Closes around ${format12Hour(todayHours.close)}`;
     } else {
       // Find next opening
       let nextDay = day;
       for (let i = 1; i <= 7; i++) {
         nextDay = (day + i) % 7;
-        if (HOURS[nextDay]) {
-          const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-          const openHour = HOURS[nextDay].open;
-          message = `Closed · Opens ${i === 1 ? 'tomorrow' : days[nextDay]} at ${openHour > 12 ? openHour - 12 : openHour}${openHour >= 12 ? 'pm' : 'am'}`;
+        if (hours[nextDay]) {
+          message = `Closed · Opens ${i === 1 ? 'tomorrow' : days[nextDay]} at ${format12Hour(hours[nextDay].open)}`;
           break;
         }
       }
@@ -789,7 +856,7 @@ const autoAddRevealClasses = () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   // Add reveal to sections
-  document.querySelectorAll('section > .container, .hero-tagline, .featured-cocktail, .testimonials-section, .footer-newsletter').forEach(el => {
+  document.querySelectorAll('section > .container, .hero-tagline, .featured-cocktail, .footer-newsletter').forEach(el => {
     if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left') && !el.classList.contains('reveal-right')) {
       el.classList.add('reveal');
     }

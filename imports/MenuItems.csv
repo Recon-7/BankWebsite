@@ -1,0 +1,62 @@
+Name,description,price,tab,section,sortOrder
+Garlic Mushrooms,Served with bread (AGF/V),,two-course,Starters,1
+Beef Meatballs,Served in a spicy tomato and herb sauce,,two-course,Starters,2
+Spicy Hummus,"Made from chickpeas, tahini (sesame paste), cumin, olive oil, lemon juice & garlic served with bread (VG)",,two-course,Starters,3
+Soup of the Day,Served with warm bread (V),,two-course,Starters,4
+Chicken Katsu,"Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish",,two-course,Mains,1
+Thai Green Vegetable Curry,"An aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk with tender vegetables and steamed rice (V) (VG) (GF)",,two-course,Mains,2
+Homemade Lasagne,"Oven baked with beef mince, topped with mozzarella cheese and napoli sauce, served with chunky chips and salad garnish",,two-course,Mains,3
+Hand Battered Cod,"Served with chunky chips, mushy peas and tartare sauce",,two-course,Mains,4
+Smash Burger,"Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce and homemade coleslaw served with fries",,two-course,Mains,5
+Chocolate Brownie,Served with vanilla ice cream,,two-course,Desserts,1
+Sticky Toffee Pudding,Served with custard or vanilla ice cream,,two-course,Desserts,2
+Ice Cream,"Choice of vanilla, chocolate or strawberry",,two-course,Desserts,3
+Tempura King Prawns,Asian slaw & sweet chilli dip,£11,tapas,Tapas Selection,1
+Thai Beef Skewers,Slaw & black bean aioli,£10,tapas,Tapas Selection,2
+Char Sui Belly Pork,Slaw & 5 spice carrot purée,£10,tapas,Tapas Selection,3
+Mussels,Thai curry or white wine sauce,£10,tapas,Tapas Selection,4
+Panko Breaded Calamari,Garlic mayonnaise,£9,tapas,Tapas Selection,5
+Fish Goujons,"Battered cod, tartare sauce",£9,tapas,Tapas Selection,6
+Chicken Wings,"BBQ, salt & chilli, or spicy",£10,tapas,Light Bites,1
+Halloumi Fries,"Spring onions, sweet chilli (V, GF)",£8,tapas,Light Bites,2
+Pan Fried Chorizo,Red wine and garlic (GF),£8,tapas,Light Bites,3
+Beef Meatballs,"Spicy tomato sauce, spring onions (GF)",£9,tapas,Light Bites,4
+Patatas Bravas,Spicy bravas sauce (VG),£8,tapas,Light Bites,5
+Hummus & Red Pepper Bruschetta,Rocket & balsamic glaze (VG),£8,tapas,Light Bites,6
+8oz Sirloin or Ribeye Steak,"Rich garlic mushroom sauce, seasoned potatoes and garnish",£22,mains,Mains,1
+Hand Battered Cod,"Chunky chips, mushy peas, tartare sauce",£15,mains,Mains,2
+Chicken Katsu,"Crispy breaded chicken, Japanese-style curry sauce, steamed rice",£16,mains,Mains,3
+Thai Green Vegetable Curry,"Lemongrass, coconut milk, vegetables, steamed rice (V, VG, GF)",£16,mains,Mains,4
+Homemade Lasagne,"Beef mince, napoli sauce, mozzarella, chunky chips, salad",£15,mains,Mains,5
+Smash Burger,"Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce, coleslaw, fries",£15,mains,Burgers,1
+Peri Peri Chicken Burger,"Double fried chicken, Monterey Jack, fries",£15,mains,Burgers,2
+Veggie Burger,"Halloumi, sweet chilli mayo, sweet potato fries (V)",£14,mains,Burgers,3
+Chocolate Brownie,Served with vanilla ice cream,£7,mains,Desserts,1
+Sticky Toffee Pudding,Served with custard or vanilla ice cream,£7,mains,Desserts,2
+Ice Cream,"Choice of vanilla, chocolate or strawberry",£5,mains,Desserts,3
+Glass of Prosecco,Unlimited refills,,brunch,Unlimited Drinks,1
+Selected Cocktails,Choose from our brunch cocktail menu,,brunch,Unlimited Drinks,2
+Pint of Coors or Cider,Unlimited refills,,brunch,Unlimited Drinks,3
+Selected House Spirit,With draught mixer,,brunch,Unlimited Drinks,4
+Mocktails,Non-alcoholic options available,,brunch,Unlimited Drinks,5
+Available Any Day We're Open,Flexible booking — no fixed sittings,,brunch,Availability,1
+Last Booking,5pm (3pm on Sundays),,brunch,Availability,2
+Max Table Size,6 persons. T&Cs apply,,brunch,Availability,3
+Fish and Chips,Hand-battered cod served with chunky chips and mushy peas,£14.00,delivery,Mains,1
+Asian Sharer Box,"Salt & chilli pepper chicken wings, Asian style breaded items and sauces",£20.00,delivery,Mains,2
+Homemade Lasagne,"Oven baked beef mince topped with mozzarella, served with chunky chips",£18.00,delivery,Mains,3
+Garden Chicken Curry,Chicken in a Thai green curry sauce with coconut milk,£12.00,delivery,Mains,4
+Thai Green Prawn Curry,Prawns in Thai green curry with coconut milk,£18.00,delivery,Mains,5
+Thai Green Veg Curry,"Classic Thai green curry with mixed vegetables in a creamy coconut sauce (V, VG, GF)",£14.00,delivery,Mains,6
+Choice of Dip,Your choice of dip to accompany your sides,£0.75,delivery,Sides,1
+French Fries,"Thinly sliced potatoes, cooked to a crispy finish",£4.50,delivery,Sides,2
+Sweet Potato Fries,Crispy sweet potato strips served as a side dish,£5.50,delivery,Sides,3
+Chunky Chips,"Thick-cut potato slices, cooked to a crispy finish",£4.50,delivery,Sides,4
+Creamy Garlic Mushrooms,Creamy garlic mushrooms served with toasted bread,£9.00,delivery,Sides,5
+Halloumi Fries,Halloumi fries topped with spring onions,£8.00,delivery,Sides,6
+Sticky Toffee Pudding,Salted butterscotch sauce and vanilla ice cream,£8.00,delivery,Desserts,1
+Triple Chocolate Brownie,With mixed berry compote and vanilla ice cream,£8.00,delivery,Desserts,2
+Bottle Coca-Cola 330ml,,£2.75,delivery,Drinks,1
+Bottle Diet Coca-Cola,,£2.75,delivery,Drinks,2
+Can Red Bull,,£2.50,delivery,Drinks,3
+J20 Orange & Passionfruit,,£2.50,delivery,Drinks,4

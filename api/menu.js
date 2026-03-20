@@ -39,7 +39,70 @@ async function fetchAllRecords(baseId, tableName, apiToken) {
 }
 
 // Transform raw Airtable records to site format
-function transformData(cocktails, happyHour, openingHours, wines, hotBeverages) {
+function assembleMenuTabs(menuTabsRecords, menuSectionsRecords, menuItemsRecords, deliveryOptions) {
+  if (!menuTabsRecords.length) return null;
+
+  const tabs = menuTabsRecords
+    .filter(r => r.fields.tabId && r.fields.label)
+    .sort((a, b) => (a.fields.sortOrder || 0) - (b.fields.sortOrder || 0))
+    .map(tabRecord => {
+      const tabId = tabRecord.fields.tabId;
+      const label = tabRecord.fields.label || tabId;
+      const note = tabRecord.fields.note || null;
+
+      // Get sections for this tab, grouped by column
+      const tabSections = menuSectionsRecords
+        .filter(s => s.fields.tab === tabId)
+        .sort((a, b) => (a.fields.column || 1) - (b.fields.column || 1) || (a.fields.sortOrder || 0) - (b.fields.sortOrder || 0));
+
+      const columnMap = {};
+      tabSections.forEach(sectionRecord => {
+        const col = sectionRecord.fields.column || 1;
+        if (!columnMap[col]) columnMap[col] = [];
+
+        const sectionTitle = sectionRecord.fields.title;
+        const items = menuItemsRecords
+          .filter(item => item.fields.tab === tabId && item.fields.section === sectionTitle)
+          .sort((a, b) => (a.fields.sortOrder || 0) - (b.fields.sortOrder || 0))
+          .map(item => {
+            const obj = {
+              name: item.fields.Name || item.fields.name || '',
+              desc: item.fields.description || ''
+            };
+            if (item.fields.price) obj.price = item.fields.price;
+            return obj;
+          });
+
+        columnMap[col].push({ title: sectionTitle, items });
+      });
+
+      const columns = Object.keys(columnMap)
+        .sort((a, b) => Number(a) - Number(b))
+        .map(col => ({ sections: columnMap[col] }));
+
+      const tab = { id: tabId, label, columns };
+      if (note) tab.note = note;
+
+      // Attach delivery ordering options
+      if (tabId === 'delivery') {
+        tab.type = 'delivery';
+        tab.options = deliveryOptions
+          .sort((a, b) => (a.fields.sortOrder || 0) - (b.fields.sortOrder || 0))
+          .map(r => ({
+            name: r.fields.Name || '',
+            url: r.fields.url || '',
+            description: r.fields.description || '',
+            note: r.fields.note || ''
+          }));
+      }
+
+      return tab;
+    });
+
+  return tabs;
+}
+
+function transformData(cocktails, happyHour, openingHours, wines, hotBeverages, menuTabs, menuSections, menuItems, deliveryOptions, reviews) {
   return {
     cocktails: cocktails.map(record => ({
       name: record.fields.Name || record.fields.name || 'Unknown',
@@ -74,11 +137,38 @@ function transformData(cocktails, happyHour, openingHours, wines, hotBeverages) 
       note: 'Mix & Match Happy Hour'
     },
 
-    openingHours: openingHours.map(record => ({
-      day: record.fields.day || '',
-      time: record.fields.time || '',
-      closed: Boolean(record.fields.closed)
-    })).filter(h => h.day),
+    openingHours: openingHours
+      .map(record => ({
+        day: record.fields.day || '',
+        time: record.fields.time || '',
+        closed: Boolean(record.fields.closed)
+      }))
+      .filter(h => h.day)
+      .sort((a, b) => {
+        const dayOrder = {
+          Monday: 0,
+          Tuesday: 1,
+          Wednesday: 2,
+          Thursday: 3,
+          Friday: 4,
+          Saturday: 5,
+          Sunday: 6
+        };
+
+        return (dayOrder[a.day] ?? 999) - (dayOrder[b.day] ?? 999);
+      }),
+
+    menuTabs: assembleMenuTabs(menuTabs, menuSections, menuItems, deliveryOptions) || [],
+
+    reviews: reviews
+      .sort((a, b) => (a.fields.sortOrder || 0) - (b.fields.sortOrder || 0))
+      .map(r => ({
+        author: r.fields.Name || '',
+        quote: r.fields.quote || '',
+        source: r.fields.source || '',
+        rating: r.fields.rating || 5
+      }))
+      .filter(r => r.author && r.quote),
 
     _meta: {
       cached: new Date().toISOString(),
@@ -116,25 +206,35 @@ async function fetchAirtableData(forceRefresh = false) {
       fetchAllRecords(baseId, 'HappyHour', apiToken),
       fetchAllRecords(baseId, 'OpeningHours', apiToken),
       fetchAllRecords(baseId, 'Wines', apiToken),
-      fetchAllRecords(baseId, 'HotBeverages', apiToken)
+      fetchAllRecords(baseId, 'HotBeverages', apiToken),
+      fetchAllRecords(baseId, 'MenuTabs', apiToken),
+      fetchAllRecords(baseId, 'MenuSections', apiToken),
+      fetchAllRecords(baseId, 'MenuItems', apiToken),
+      fetchAllRecords(baseId, 'DeliveryOptions', apiToken),
+      fetchAllRecords(baseId, 'Reviews', apiToken)
     ]);
 
     // Extract results, using empty arrays for failures
-    const cocktails = results[0].status === 'fulfilled' ? results[0].value : [];
-    const happyHour = results[1].status === 'fulfilled' ? results[1].value : [];
+    const cocktails    = results[0].status === 'fulfilled' ? results[0].value : [];
+    const happyHour    = results[1].status === 'fulfilled' ? results[1].value : [];
     const openingHours = results[2].status === 'fulfilled' ? results[2].value : [];
-    const wines = results[3].status === 'fulfilled' ? results[3].value : [];
+    const wines        = results[3].status === 'fulfilled' ? results[3].value : [];
     const hotBeverages = results[4].status === 'fulfilled' ? results[4].value : [];
+    const menuTabs     = results[5].status === 'fulfilled' ? results[5].value : [];
+    const menuSections = results[6].status === 'fulfilled' ? results[6].value : [];
+    const menuItems    = results[7].status === 'fulfilled' ? results[7].value : [];
+    const deliveryOptions = results[8].status === 'fulfilled' ? results[8].value : [];
+    const reviews        = results[9].status === 'fulfilled' ? results[9].value : [];
 
     // Log any partial failures
     results.forEach((r, i) => {
       if (r.status === 'rejected') {
-        const tables = ['Cocktails', 'HappyHour', 'OpeningHours', 'Wines', 'HotBeverages'];
+        const tables = ['Cocktails', 'HappyHour', 'OpeningHours', 'Wines', 'HotBeverages', 'MenuTabs', 'MenuSections', 'MenuItems', 'DeliveryOptions', 'Reviews'];
         console.warn(`Failed to fetch ${tables[i]}:`, r.reason?.message);
       }
     });
 
-    const transformedData = transformData(cocktails, happyHour, openingHours, wines, hotBeverages);
+    const transformedData = transformData(cocktails, happyHour, openingHours, wines, hotBeverages, menuTabs, menuSections, menuItems, deliveryOptions, reviews);
 
     // Only cache if we got at least some data
     if (cocktails.length > 0 || happyHour.length > 0 || openingHours.length > 0) {

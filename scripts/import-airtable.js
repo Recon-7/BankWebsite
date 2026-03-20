@@ -29,15 +29,23 @@ function parseCSV(filePath) {
     trim: true
   });
 
+  const NUMBER_FIELDS = new Set(['sortOrder', 'column', 'rating']);
+  const BOOL_FIELDS = new Set(['happyHour', 'closed']);
+
   return records.map(row => {
     const cleanRow = {};
     for (const [key, value] of Object.entries(row)) {
-      // Convert TRUE/FALSE strings to booleans for checkbox fields
-      if (key === 'happyHour' || key === 'closed') {
+      if (BOOL_FIELDS.has(key)) {
         cleanRow[key] = value.toUpperCase() === 'TRUE';
+      } else if (NUMBER_FIELDS.has(key)) {
+        cleanRow[key] = value === '' ? null : Number(value);
       } else {
-        cleanRow[key] = value;
+        cleanRow[key] = value === '' ? null : value;
       }
+    }
+    // Remove null fields so Airtable ignores them
+    for (const key of Object.keys(cleanRow)) {
+      if (cleanRow[key] === null) delete cleanRow[key];
     }
     return cleanRow;
   });
@@ -79,6 +87,11 @@ async function main() {
     await uploadToAirtable('OpeningHours', path.join(__dirname, '../imports/OpeningHours.csv'));
     await uploadToAirtable('Wines', path.join(__dirname, '../imports/Wines.csv'));
     await uploadToAirtable('HotBeverages', path.join(__dirname, '../imports/HotBeverages.csv'));
+    await uploadToAirtable('MenuTabs', path.join(__dirname, '../imports/MenuTabs.csv'));
+    await uploadToAirtable('MenuSections', path.join(__dirname, '../imports/MenuSections.csv'));
+    await uploadToAirtable('MenuItems', path.join(__dirname, '../imports/MenuItems.csv'));
+    await uploadToAirtable('DeliveryOptions', path.join(__dirname, '../imports/DeliveryOptions.csv'));
+    await uploadToAirtable('Reviews', path.join(__dirname, '../imports/Reviews.csv'));
 
     console.log('🎉 All data imported successfully!');
     console.log('\nNext steps:');

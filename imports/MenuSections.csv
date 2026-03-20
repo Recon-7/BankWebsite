@@ -1,0 +1,15 @@
+tab,title,column,sortOrder
+two-course,Starters,1,1
+two-course,Mains,2,1
+two-course,Desserts,2,2
+tapas,Tapas Selection,1,1
+tapas,Light Bites,2,1
+mains,Mains,1,1
+mains,Burgers,2,1
+mains,Desserts,2,2
+brunch,Unlimited Drinks,1,1
+brunch,Availability,2,1
+delivery,Mains,1,1
+delivery,Sides,1,2
+delivery,Desserts,2,1
+delivery,Drinks,2,2
