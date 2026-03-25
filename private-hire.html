@@ -61,26 +61,61 @@
           <div id="private-hire-packages" class="grid-2 mt-12"></div>
         </div>
 
-        <div class="card reveal mt-1">
+        <div class="card reveal mt-12">
           <h3>Make an Enquiry</h3>
           <form id="private-hire-form">
-            <div class="form-row"><input class="form-input" name="name" type="text" placeholder="Your name" required></div>
-            <div class="form-row"><input class="form-input" name="email" type="email" placeholder="Email address" required></div>
-            <div class="form-row">
-              <label class="form-label" for="packageInterest">Package you're enquiring about</label>
-              <select class="form-input" id="packageInterest" name="packageInterest" required>
-                <option value="Bronze">Bronze</option>
-                <option value="Silver">Silver</option>
-                <option value="I don't know yet">I don't know yet</option>
-              </select>
-            </div>
             <div class="form-grid-2">
-              <input class="form-input" name="eventDate" type="date" required>
-              <input class="form-input" name="guestCount" type="text" placeholder="Number of guests" required>
+              <div class="form-group">
+                <label class="form-label" for="hireName">Your name</label>
+                <input class="form-input" id="hireName" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="hireEmail">Email address</label>
+                <input class="form-input" id="hireEmail" name="email" type="email" autocomplete="email" required>
+              </div>
             </div>
-            <div class="form-row mt-09"><textarea class="form-input" name="details" rows="4" placeholder="Tell us about your event" required></textarea></div>
-            <button class="btn btn-primary" type="submit">Send Enquiry</button>
-            <p id="private-hire-status" class="menu-note">This opens your email app to contact info@thebanklowfell.co.uk.</p>
+            <div class="form-group mt-09">
+              <span class="form-label">Package interest</span>
+              <div class="package-selector" role="group" aria-label="Package interest">
+                <label class="package-option">
+                  <input type="radio" name="packageInterest" value="Bronze" required>
+                  <span class="package-option-inner">
+                    <span class="package-option-name">Bronze</span>
+                    <span class="package-option-price">From £350</span>
+                  </span>
+                </label>
+                <label class="package-option">
+                  <input type="radio" name="packageInterest" value="Silver">
+                  <span class="package-option-inner">
+                    <span class="package-option-name">Silver</span>
+                    <span class="package-option-price">From £450</span>
+                  </span>
+                </label>
+                <label class="package-option">
+                  <input type="radio" name="packageInterest" value="I don't know yet">
+                  <span class="package-option-inner">
+                    <span class="package-option-name">Not sure yet</span>
+                    <span class="package-option-price">Tell us your needs</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="form-grid-2 mt-09">
+              <div class="form-group">
+                <label class="form-label" for="hireDate">Event date</label>
+                <input class="form-input" id="hireDate" name="eventDate" type="date" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="hireGuests">Number of guests</label>
+                <input class="form-input" id="hireGuests" name="guestCount" type="text" required>
+              </div>
+            </div>
+            <div class="form-group mt-09">
+              <label class="form-label" for="hireDetails">Tell us about your event</label>
+              <textarea class="form-input" id="hireDetails" name="details" rows="4" required></textarea>
+            </div>
+            <button class="btn btn-primary mt-12" type="submit">Send Enquiry</button>
+            <p id="private-hire-status" class="menu-note" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
