@@ -4,7 +4,7 @@
       "id": "two-course",
       "label": "Two Course Deal",
       "note": "Choose either a starter and a main, or a main and dessert with a drink for £20pp",
-      "drinkNote": "Drinks include: any selected cocktail, 175ml glass of wine or prosecco, draught pint of Coors or Cornish Cider or soft drink",
+      "drinkNote": "Drinks include: any selected cocktail, 175ml glass of wine or prosecco, draught pint of Coors or Cornish Cider, or soft drink",
       "columns": [
         {
           "sections": [
@@ -25,7 +25,7 @@
               "title": "Mains",
               "items": [
                 { "name": "Chicken Katsu", "desc": "Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish" },
-                { "name": "Thai Green Vegetable Curry", "desc": "An aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk with tender vegetables and steamed rice (V) (VG) (GF)" },
+                { "name": "Thai Green Vegetable Curry", "desc": "Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk with tender vegetables and steamed rice (V)(VG)(GF)" },
                 { "name": "Homemade Lasagne", "desc": "Oven baked with beef mince, topped with mozzarella cheese and napoli sauce, served with chunky chips and salad garnish" },
                 { "name": "Hand Battered Cod", "desc": "Served with chunky chips, mushy peas and tartare sauce" },
                 { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce and homemade coleslaw served with fries" }
@@ -89,11 +89,15 @@
             {
               "title": "Mains",
               "items": [
-                { "name": "8oz Sirloin or Ribeye Steak", "desc": "Rich garlic mushroom sauce, seasoned potatoes and garnish", "price": "£22" },
-                { "name": "Hand Battered Cod", "desc": "Chunky chips, mushy peas, tartare sauce", "price": "£15" },
-                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken, Japanese-style curry sauce, steamed rice", "price": "£16" },
-                { "name": "Thai Green Vegetable Curry", "desc": "Lemongrass, coconut milk, vegetables, steamed rice (V, VG, GF)", "price": "£16" },
-                { "name": "Homemade Lasagne", "desc": "Beef mince, napoli sauce, mozzarella, chunky chips, salad", "price": "£15" }
+                { "name": "Ribeye/Sirloin Steak", "desc": "Succulent 8oz ribeye or sirloin cooked to your liking, served with a rich garlic mushroom sauce, seasoned baby potatoes and garnish (GF)", "price": "£22" },
+                { "name": "Chicken Katsu", "desc": "Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish", "price": "£14" },
+                { "name": "Thai Green Chicken/Prawn Curry", "desc": "Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk, served with steamed rice (GF)", "price": "£16" },
+                { "name": "Thai Green Vegetable Curry", "desc": "Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk, served with steamed rice (V)(VG)", "price": "£14" },
+                { "name": "Chicken Burger", "desc": "Buttermilk chicken breast, hash brown, lettuce, tomato, mature cheese, red onion, garlic mayo and burger sauce, served with fries", "price": "£14" },
+                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce and homemade coleslaw, served with fries", "price": "£14" },
+                { "name": "Homemade Lasagne", "desc": "Oven baked with beef mince, topped with mozzarella cheese and napoli sauce, served with chunky chips and salad garnish", "price": "£13" },
+                { "name": "Halloumi Burger", "desc": "Crispy halloumi, tomato, lettuce and sweet chilli sauce, served with sweet potato fries (V)", "price": "£11" },
+                { "name": "Hand Battered Cod", "desc": "Served with chunky chips, mushy peas and tartare sauce", "price": "£14" }
               ]
             }
           ]
@@ -101,18 +105,10 @@
         {
           "sections": [
             {
-              "title": "Burgers",
-              "items": [
-                { "name": "Smash Burger", "desc": "Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce, coleslaw, fries", "price": "£15" },
-                { "name": "Peri Peri Chicken Burger", "desc": "Double fried chicken, Monterey Jack, fries", "price": "£15" },
-                { "name": "Veggie Burger", "desc": "Halloumi, sweet chilli mayo, sweet potato fries (V)", "price": "£14" }
-              ]
-            },
-            {
               "title": "Desserts",
               "items": [
-                { "name": "Chocolate Brownie", "desc": "Served with vanilla ice cream", "price": "£7" },
-                { "name": "Sticky Toffee Pudding", "desc": "Served with custard or vanilla ice cream", "price": "£7" },
+                { "name": "Sticky Toffee Pudding", "price": "£6" },
+                { "name": "Triple Chocolate Brownie", "price": "£6" },
                 { "name": "Ice Cream", "desc": "Choice of vanilla, chocolate or strawberry", "price": "£5" }
               ]
             }
@@ -225,6 +221,65 @@
           "description": "Place your order via Uber Eats for delivery to your door.",
           "note": "BOGOF on burgers!"
         }
+      ]
+    }
+  ],
+  "privateHirePackages": [
+    {
+      "name": "Bronze Package",
+      "price": "From £350*",
+      "note": "Price based on 30 people. Additional guests £10pp",
+      "foodIncluded": [
+        "Selection of Finger Sandwiches (Tuna Mayo, Egg Mayo & Coronation Chicken)",
+        "Selection of Quiches (Cheese & Onion and Leek & Potato)",
+        "Crispy Cod Bites (served with Tartare Sauce)",
+        "Sage & Onion Sausage Rolls",
+        "Potato Salad",
+        "Asian Platter Selection (Vegetable Spring Rolls & Onion Bhajis)",
+        "Selection of Fries/Tortilla Chips (served with Dips)"
+      ],
+      "included": [
+        "Room Hire",
+        "Table Linen",
+        "Bluetooth Speakers",
+        "Private Bar"
+      ],
+      "extras": [
+        "Prosecco Reception from £7pp",
+        "Cocktail Reception from £8pp",
+        "Canapés from £7pp",
+        "Tea/Coffee from £2pp",
+        "DJ from £170"
+      ]
+    },
+    {
+      "name": "Silver Package",
+      "price": "From £450*",
+      "note": "Price based on 30 people. Additional guests £13pp",
+      "foodIncluded": [
+        "Selection of Finger Sandwiches (Tuna Mayo, Egg Mayo & Coronation Chicken)",
+        "Selection of Ciabatta Pizzas (Meat & Vegetarian)",
+        "Selection of Quiches (Cheese & Onion and Leek & Potato)",
+        "Crispy Cod Bites (served with Tartare Sauce)",
+        "Sage & Onion Sausage Rolls",
+        "Breaded Chicken Goujons (served with Sweet Chilli Sauce)",
+        "Asian Platter Selection (Vegetable Spring Rolls & Onion Bhajis)",
+        "Thai Green Chicken Curry (served with Basmati Rice)",
+        "Selection of Fries/Tortilla Chips (served with Dips)",
+        "Potato Salad"
+      ],
+      "included": [
+        "Room Hire",
+        "Table Linen",
+        "Bluetooth Speakers",
+        "Private Bar"
+      ],
+      "extras": [
+        "Prosecco Reception from £7pp",
+        "Cocktail Reception from £8pp",
+        "Canapés from £7pp",
+        "Tea/Coffee from £2pp",
+        "DJ from £170"
       ]
     }
   ],

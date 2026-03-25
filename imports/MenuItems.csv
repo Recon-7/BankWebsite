@@ -4,7 +4,7 @@ Beef Meatballs,Served in a spicy tomato and herb sauce,,two-course,Starters,2
 Spicy Hummus,"Made from chickpeas, tahini (sesame paste), cumin, olive oil, lemon juice & garlic served with bread (VG)",,two-course,Starters,3
 Soup of the Day,Served with warm bread (V),,two-course,Starters,4
 Chicken Katsu,"Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish",,two-course,Mains,1
-Thai Green Vegetable Curry,"An aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk with tender vegetables and steamed rice (V) (VG) (GF)",,two-course,Mains,2
+Thai Green Vegetable Curry,"Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk with tender vegetables and steamed rice (V)(VG)(GF)",,two-course,Mains,2
 Homemade Lasagne,"Oven baked with beef mince, topped with mozzarella cheese and napoli sauce, served with chunky chips and salad garnish",,two-course,Mains,3
 Hand Battered Cod,"Served with chunky chips, mushy peas and tartare sauce",,two-course,Mains,4
 Smash Burger,"Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce and homemade coleslaw served with fries",,two-course,Mains,5
@@ -23,16 +23,17 @@ Pan Fried Chorizo,Red wine and garlic (GF),£8,tapas,Light Bites,3
 Beef Meatballs,"Spicy tomato sauce, spring onions (GF)",£9,tapas,Light Bites,4
 Patatas Bravas,Spicy bravas sauce (VG),£8,tapas,Light Bites,5
 Hummus & Red Pepper Bruschetta,Rocket & balsamic glaze (VG),£8,tapas,Light Bites,6
-8oz Sirloin or Ribeye Steak,"Rich garlic mushroom sauce, seasoned potatoes and garnish",£22,mains,Mains,1
-Hand Battered Cod,"Chunky chips, mushy peas, tartare sauce",£15,mains,Mains,2
-Chicken Katsu,"Crispy breaded chicken, Japanese-style curry sauce, steamed rice",£16,mains,Mains,3
-Thai Green Vegetable Curry,"Lemongrass, coconut milk, vegetables, steamed rice (V, VG, GF)",£16,mains,Mains,4
-Homemade Lasagne,"Beef mince, napoli sauce, mozzarella, chunky chips, salad",£15,mains,Mains,5
-Smash Burger,"Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce, coleslaw, fries",£15,mains,Burgers,1
-Peri Peri Chicken Burger,"Double fried chicken, Monterey Jack, fries",£15,mains,Burgers,2
-Veggie Burger,"Halloumi, sweet chilli mayo, sweet potato fries (V)",£14,mains,Burgers,3
-Chocolate Brownie,Served with vanilla ice cream,£7,mains,Desserts,1
-Sticky Toffee Pudding,Served with custard or vanilla ice cream,£7,mains,Desserts,2
+Ribeye/Sirloin Steak,"Succulent 8oz ribeye or sirloin cooked to your liking, served with a rich garlic mushroom sauce, seasoned baby potatoes and garnish (GF)",£22,mains,Mains,1
+Chicken Katsu,"Crispy breaded chicken served with Japanese-style curry sauce, steamed rice and garnish",£14,mains,Mains,2
+Thai Green Chicken/Prawn Curry,"Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk, served with steamed rice (GF)",£16,mains,Mains,3
+Thai Green Vegetable Curry,"Aromatic green curry infused with lemongrass and kaffir lime, creamy coconut milk, served with steamed rice (V)(VG)",£14,mains,Mains,4
+Chicken Burger,"Buttermilk chicken breast, hash brown, lettuce, tomato, mature cheese, red onion, garlic mayo and burger sauce, served with fries",£14,mains,Mains,5
+Smash Burger,"Two smashed beef patties, lettuce, tomato, red onion, mature cheese, burger sauce and homemade coleslaw, served with fries",£14,mains,Mains,6
+Homemade Lasagne,"Oven baked with beef mince, topped with mozzarella cheese and napoli sauce, served with chunky chips and salad garnish",£13,mains,Mains,7
+Halloumi Burger,"Crispy halloumi, tomato, lettuce and sweet chilli sauce, served with sweet potato fries (V)",£11,mains,Mains,8
+Hand Battered Cod,"Served with chunky chips, mushy peas and tartare sauce",£14,mains,Mains,9
+Sticky Toffee Pudding,,£6,mains,Desserts,1
+Triple Chocolate Brownie,,£6,mains,Desserts,2
 Ice Cream,"Choice of vanilla, chocolate or strawberry",£5,mains,Desserts,3
 Glass of Prosecco,Unlimited refills,,brunch,Unlimited Drinks,1
 Selected Cocktails,Choose from our brunch cocktail menu,,brunch,Unlimited Drinks,2

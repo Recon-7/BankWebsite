@@ -44,11 +44,36 @@
           </div>
         </div>
 
+        <div class="private-hire-showcase reveal mt-12">
+          <div class="private-hire-showcase-media">
+            <img src="assets/images/venue/private-hire-buffet.webp" alt="Private hire buffet spread at The Bank" loading="lazy">
+          </div>
+          <div class="private-hire-showcase-copy card">
+            <p class="eyebrow">Private Events</p>
+            <h3>Buffet Packages That Feel Ready To Book</h3>
+            <p>Choose a package, send one enquiry, and we can take it from there. The page now makes it easy for guests to tell you whether they want Bronze, Silver, or are still deciding.</p>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h2 class="section-title reveal">Event <em>Packages</em></h2>
+          <p class="section-copy reveal copy-center">Bronze and Silver food packages for private events at The Bank.</p>
+          <div id="private-hire-packages" class="grid-2 mt-12"></div>
+        </div>
+
         <div class="card reveal mt-1">
           <h3>Make an Enquiry</h3>
           <form id="private-hire-form">
             <div class="form-row"><input class="form-input" name="name" type="text" placeholder="Your name" required></div>
             <div class="form-row"><input class="form-input" name="email" type="email" placeholder="Email address" required></div>
+            <div class="form-row">
+              <label class="form-label" for="packageInterest">Package you're enquiring about</label>
+              <select class="form-input" id="packageInterest" name="packageInterest" required>
+                <option value="Bronze">Bronze</option>
+                <option value="Silver">Silver</option>
+                <option value="I don't know yet">I don't know yet</option>
+              </select>
+            </div>
             <div class="form-grid-2">
               <input class="form-input" name="eventDate" type="date" required>
               <input class="form-input" name="guestCount" type="text" placeholder="Number of guests" required>

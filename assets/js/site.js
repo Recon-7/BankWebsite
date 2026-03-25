@@ -220,6 +220,7 @@ const renderMenus = (siteData) => {
             </div>`
           : ''}
         ${tab.note ? `<p class="menu-note">${escapeHtml(tab.note)}</p>` : ''}
+        ${tab.drinkNote ? `<p class="menu-note">${escapeHtml(tab.drinkNote)}</p>` : ''}
       </div>
     `;
     })
@@ -273,6 +274,38 @@ const renderMenus = (siteData) => {
   });
 };
 
+const renderPrivateHirePackages = (siteData) => {
+  const packagesEl = document.getElementById('private-hire-packages');
+  if (!packagesEl || !siteData.privateHirePackages?.length) return;
+
+  packagesEl.innerHTML = siteData.privateHirePackages.map((pkg) => `
+    <article class="card reveal private-hire-package">
+      <div class="private-hire-package-header">
+        <div>
+          <p class="eyebrow">Private Hire</p>
+          <h3>${escapeHtml(pkg.name)}</h3>
+        </div>
+        <div class="private-hire-package-price">${escapeHtml(pkg.price)}</div>
+      </div>
+      ${pkg.note ? `<p class="menu-note">${escapeHtml(pkg.note)}</p>` : ''}
+      <div class="private-hire-package-block">
+        <h4>Food Included</h4>
+        <ul class="private-hire-package-list">
+          ${pkg.foodIncluded.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="private-hire-package-block">
+        <h4>Included</h4>
+        <p>${escapeHtml(pkg.included.join(', '))}</p>
+      </div>
+      <div class="private-hire-package-block">
+        <h4>Extras</h4>
+        <p>${escapeHtml(pkg.extras.join(', '))}</p>
+      </div>
+    </article>
+  `).join('');
+};
+
 const renderCocktails = (siteData) => {
   const el = document.getElementById('cocktails-grid');
   if (!el) return;
@@ -283,6 +316,8 @@ const renderCocktails = (siteData) => {
       ? 'assets/images/drinks/espresso-martini.png'
       : nameLower.includes('pornstar')
         ? 'assets/images/drinks/pornstar-martini.png'
+        : nameLower.includes('aperol spritz') || nameLower.includes('lemon spritz')
+          ? 'assets/images/drinks/aperol-spritz.webp'
         : 'assets/images/drinks/cocktails.jpg';
     return `
     <div class="cocktail-card${c.happyHour ? ' happy-hour' : ''}">
@@ -566,6 +601,7 @@ const wirePrivateHireForm = () => {
     const formData = new FormData(form);
     const name = String(formData.get('name') || '').trim();
     const email = String(formData.get('email') || '').trim();
+    const packageInterest = String(formData.get('packageInterest') || '').trim();
     const eventDate = String(formData.get('eventDate') || '').trim();
     const guestCount = String(formData.get('guestCount') || '').trim();
     const details = String(formData.get('details') || '').trim();
@@ -576,6 +612,7 @@ const wirePrivateHireForm = () => {
       '',
       `Name: ${name}`,
       `Email: ${email}`,
+      `Package: ${packageInterest}`,
       `Event Date: ${eventDate}`,
       `Number of Guests: ${guestCount}`,
       '',
@@ -649,6 +686,7 @@ const init = async () => {
     renderHappyHour(siteData);
     renderHours(siteData);
     renderReviews(siteData);
+    renderPrivateHirePackages(siteData);
     initOpenStatus(siteData);
     
     // Drinks page
